@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: oracle-21c-xe
+    environment:
+      - ORACLE_PASSWORD=oracle
+      - APP_USER=mms_user
+      - APP_USER_PASSWORD=mms_password
+      - ORACLE_DATABASE=XEPDB1
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./database:/container-entrypoint-initdb.d
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "$ORACLE_BASE/$ORACLE_HOME/bin/sqlplus -L system/oracle@localhost:1521/XEPDB1 <<< 'SELECT 1 FROM DUAL;'"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+volumes:
+  oracle_data:
+    driver: local
