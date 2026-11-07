@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased;
+    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white;
     min-height: 100vh;
   }
 }
@@ -22,4 +22,37 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-400 dark:bg-slate-600;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s infinite;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80;
+}
+
+.glass-card {
+  @apply bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+/* Print styles for invoices and reports */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  header, aside, .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
