@@ -71,3 +71,4 @@ def create_user(payload: UserCreate, _: Dict[str, Any] = Depends(require_admin))
         "full_name": payload.full_name,
         "created_at": None
     }
+

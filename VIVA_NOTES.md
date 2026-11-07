@@ -165,3 +165,4 @@ GROUP BY br.brand_id, br.brand_name
 ORDER BY br.brand_id;
 ```
 This guarantees that **every batch is counted exactly once**, preserving data integrity and financial precision.
+

@@ -139,3 +139,4 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 };
 
 export default Sidebar;
+

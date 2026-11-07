@@ -299,3 +299,4 @@ const SalesHistory = () => {
 };
 
 export default SalesHistory;
+

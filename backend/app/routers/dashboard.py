@@ -152,3 +152,4 @@ def get_dashboard_summary(current_user = Depends(require_authenticated)):
         reorder_alerts=reorder_alerts,
         database_engine=db_manager.engine_name
     )
+

@@ -328,3 +328,4 @@ def run_select_query(payload: SqlRunRequest, current_user = Depends(require_auth
         row_count=len(rows),
         execution_time_ms=round(elapsed, 2)
     )
+

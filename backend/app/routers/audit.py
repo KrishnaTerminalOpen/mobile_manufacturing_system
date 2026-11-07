@@ -32,3 +32,4 @@ def get_audit_logs(current_user = Depends(require_admin)):
         }
         for r in rows
     ]
+

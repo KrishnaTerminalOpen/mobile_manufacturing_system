@@ -240,3 +240,4 @@ class DatabaseManager:
             self.fallback_conn.close()
 
 db_manager = DatabaseManager()
+

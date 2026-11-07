@@ -321,3 +321,4 @@ const ModelDetail = () => {
 };
 
 export default ModelDetail;
+

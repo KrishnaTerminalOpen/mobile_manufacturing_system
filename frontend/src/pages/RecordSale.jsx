@@ -280,3 +280,4 @@ const RecordSale = () => {
 };
 
 export default RecordSale;
+

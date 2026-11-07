@@ -77,3 +77,4 @@ def delete_brand(brand_id: str, current_user = Depends(require_admin)):
         )
     DBService.execute("DELETE FROM BRAND WHERE brand_id = :id", {"id": brand_id})
     return {"message": f"Brand '{brand_id}' deleted successfully."}
+

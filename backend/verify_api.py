@@ -55,3 +55,4 @@ print(f"  Saving / Unit: Rs.{opt['saving_per_unit']} ({opt['saving_percentage']}
 
 print("\nALL API ENDPOINTS ARE FULLY OPERATIONAL AND VERIFIED WITH ORACLE 21C XE!")
 print("="*60)
+

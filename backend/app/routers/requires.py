@@ -91,3 +91,4 @@ def remove_component_from_bom(model_id: str, component_id: str, current_user = D
         DELETE FROM REQUIRES WHERE model_id = :mid AND component_id = :cid
     """, {"mid": model_id, "cid": component_id})
     return {"message": f"Component '{component_id}' removed from Model '{model_id}' BOM."}
+

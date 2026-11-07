@@ -148,3 +148,4 @@ def delete_component(component_id: str, current_user = Depends(require_admin)):
     DBService.execute("DELETE FROM SUPPLIED_BY WHERE component_id = :id", {"id": component_id})
     DBService.execute("DELETE FROM COMPONENT WHERE component_id = :id", {"id": component_id})
     return {"message": f"Component '{component_id}' deleted successfully."}
+

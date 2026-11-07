@@ -193,3 +193,4 @@ def delete_batch(batch_id: str, current_user = Depends(require_admin)):
         )
     DBService.execute("DELETE FROM MANUFACTURING_BATCH WHERE batch_id = :id", {"id": batch_id})
     return {"message": f"Manufacturing batch '{batch_id}' deleted successfully."}
+

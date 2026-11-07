@@ -69,3 +69,4 @@ def delete_quote(component_id: str, supplier_id: str, current_user = Depends(req
         DELETE FROM SUPPLIED_BY WHERE component_id = :cid AND supplier_id = :sid
     """, {"cid": component_id, "sid": supplier_id})
     return {"message": f"Quote for component '{component_id}' from supplier '{supplier_id}' deleted."}
+

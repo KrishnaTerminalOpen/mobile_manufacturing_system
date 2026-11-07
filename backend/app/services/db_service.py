@@ -287,3 +287,4 @@ class DBService:
                 "reorder_alert_fired": alert_fired,
                 "status_message": msg
             }
+

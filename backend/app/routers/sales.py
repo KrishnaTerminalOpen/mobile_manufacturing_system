@@ -79,3 +79,4 @@ def list_sales(
 def delete_sale(sale_id: str, current_user = Depends(require_admin)):
     DBService.execute("DELETE FROM SALE WHERE sale_id = :id", {"id": sale_id})
     return {"message": f"Sale '{sale_id}' deleted successfully."}
+

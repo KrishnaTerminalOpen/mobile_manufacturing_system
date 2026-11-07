@@ -153,3 +153,4 @@ The system implements Role-Based Access Control (**RBAC**). The login screen inc
 2. **Test Overselling Blocked**: Go to `/db-explorer` -> **Trigger Live Tester** and click **Execute Oversell Attempt** (or try selling 500 units from Batch `BCH504` in `/record-sale`). Oracle Compound Trigger blocks the insert and displays a friendly toast: `Overselling blocked: Requested quantity (500) exceeds available stock (45) for Batch BCH504 (ORA-20001)`.
 3. **Test Reorder Alert**: Go to `/record-sale`, pick Batch `BCH505` (70 units left, reorder level 50), record a sale of 30 units. The sale succeeds, remaining stock falls to 40, and an amber alert banner pops up indicating the reorder limit has been breached.
 4. **Test Brand Financial Performance (Query 4 Fix)**: Go to `/reports` -> Tab 4. Verify that each batch is aggregated cleanly via the CTE without collapsing identical manufacturing costs.
+

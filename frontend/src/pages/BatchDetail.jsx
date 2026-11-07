@@ -221,3 +221,4 @@ const BatchDetail = () => {
 };
 
 export default BatchDetail;
+

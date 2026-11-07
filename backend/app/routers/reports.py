@@ -194,3 +194,4 @@ def get_brand_financial_report(current_user = Depends(require_authenticated)):
             roi_percent=round(roi, 2)
         ))
     return results
+

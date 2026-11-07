@@ -101,3 +101,4 @@ def delete_supplier(supplier_id: str, current_user = Depends(require_admin)):
     DBService.execute("DELETE FROM SUPPLIED_BY WHERE supplier_id = :id", {"id": supplier_id})
     DBService.execute("DELETE FROM SUPPLIER WHERE supplier_id = :id", {"id": supplier_id})
     return {"message": f"Supplier '{supplier_id}' deleted successfully."}
+

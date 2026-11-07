@@ -473,3 +473,4 @@ ORDER BY remaining_stock ASC;`);
 };
 
 export default DBExplorer;
+

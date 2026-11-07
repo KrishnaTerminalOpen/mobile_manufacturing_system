@@ -359,3 +359,4 @@ const ComponentDetail = () => {
 };
 
 export default ComponentDetail;
+

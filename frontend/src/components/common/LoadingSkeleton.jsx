@@ -27,3 +27,4 @@ export const TableSkeleton = ({ rows = 6 }) => {
     </div>
   );
 };
+

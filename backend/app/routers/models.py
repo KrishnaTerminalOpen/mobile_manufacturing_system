@@ -131,3 +131,4 @@ def delete_model(model_id: str, current_user = Depends(require_admin)):
     DBService.execute("DELETE FROM REQUIRES WHERE model_id = :id", {"id": model_id})
     DBService.execute("DELETE FROM MOBILE_MODEL WHERE model_id = :id", {"id": model_id})
     return {"message": f"Model '{model_id}' deleted successfully."}
+

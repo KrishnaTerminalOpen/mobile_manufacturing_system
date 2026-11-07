@@ -31,3 +31,4 @@ COMMIT;
 
 PROMPT All Oracle database objects and seed data loaded successfully!
 EXIT;
+
