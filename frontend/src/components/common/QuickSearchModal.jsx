@@ -85,33 +85,33 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-slate-950/70 backdrop-blur-md animate-fade-in">
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-slate-900/40 backdrop-blur-xs animate-fade-in">
+      <div className="bg-white border border-slate-200/90 rounded-2xl max-w-xl w-full shadow-dropdown overflow-hidden flex flex-col max-h-[80vh]">
         {/* Search Input Bar */}
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-          <Search className="w-5 h-5 text-slate-400 shrink-0" />
+        <div className="p-4 border-b border-slate-100 flex items-center gap-3">
+          <Search className="w-5 h-5 text-indigo-600 shrink-0" />
           <input
             type="text"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type a model name, batch ID, supplier, or page..."
-            className="flex-1 bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
+            className="flex-1 bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none font-medium"
           />
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Results Stream */}
-        <div className="flex-1 overflow-y-auto p-3 space-y-4 text-xs">
+        <div className="flex-1 overflow-y-auto p-3.5 space-y-4 text-xs">
           {/* Models */}
           {filteredModels.length > 0 && (
             <div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-2 block mb-1">
+              <span className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2 block mb-1.5">
                 Mobile Models
               </span>
               <div className="space-y-1">
@@ -119,14 +119,16 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
                   <button
                     key={m.model_id}
                     onClick={() => handleSelect(`/models/${m.model_id}`)}
-                    className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-left transition-colors"
+                    className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-indigo-50/50 text-left transition-colors group"
                   >
-                    <div className="flex items-center gap-2">
-                      <Smartphone className="w-4 h-4 text-purple-500" />
-                      <span className="font-bold text-slate-900 dark:text-white">{m.model_name}</span>
-                      <span className="font-mono text-[10px] text-slate-400">{m.model_id}</span>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100">
+                        <Smartphone className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{m.model_name}</span>
+                      <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-bold">{m.model_id}</span>
                     </div>
-                    <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="font-mono font-bold text-emerald-600">
                       ₹{m.list_price.toLocaleString('en-IN')}
                     </span>
                   </button>
@@ -138,7 +140,7 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
           {/* Batches */}
           {filteredBatches.length > 0 && (
             <div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-2 block mb-1">
+              <span className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2 block mb-1.5">
                 Production Batches
               </span>
               <div className="space-y-1">
@@ -146,14 +148,16 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
                   <button
                     key={b.batch_id}
                     onClick={() => handleSelect(`/batches/${b.batch_id}`)}
-                    className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-left transition-colors"
+                    className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-indigo-50/50 text-left transition-colors group"
                   >
-                    <div className="flex items-center gap-2">
-                      <Factory className="w-4 h-4 text-blue-500" />
-                      <span className="font-bold text-slate-900 dark:text-white font-mono">{b.batch_id}</span>
-                      <span className="text-slate-500 truncate">{b.model_name}</span>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                        <Factory className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-bold text-slate-900 font-mono group-hover:text-indigo-600 transition-colors">{b.batch_id}</span>
+                      <span className="text-slate-500 truncate text-[11px]">{b.model_name}</span>
                     </div>
-                    <span className="text-[11px] font-mono text-slate-500">
+                    <span className="text-[11px] font-mono text-slate-600 font-bold bg-slate-100 px-2 py-0.5 rounded">
                       {b.remaining_stock} units left
                     </span>
                   </button>
@@ -165,7 +169,7 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
           {/* Suppliers */}
           {filteredSuppliers.length > 0 && (
             <div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-2 block mb-1">
+              <span className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2 block mb-1.5">
                 Suppliers & Vendors
               </span>
               <div className="space-y-1">
@@ -173,11 +177,13 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
                   <button
                     key={s.supplier_id}
                     onClick={() => handleSelect('/suppliers')}
-                    className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-left transition-colors"
+                    className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-indigo-50/50 text-left transition-colors group"
                   >
-                    <div className="flex items-center gap-2">
-                      <Truck className="w-4 h-4 text-amber-500" />
-                      <span className="font-bold text-slate-900 dark:text-white">{s.supplier_name}</span>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100">
+                        <Truck className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{s.supplier_name}</span>
                     </div>
                     <span className="text-slate-400 text-[10px]">{s.city}, {s.state}</span>
                   </button>
@@ -189,7 +195,7 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
           {/* Quick Pages */}
           {quickPages.length > 0 && (
             <div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-2 block mb-1">
+              <span className="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2 block mb-1.5">
                 Core Applications & Navigation
               </span>
               <div className="space-y-1">
@@ -199,13 +205,15 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
                     <button
                       key={idx}
                       onClick={() => handleSelect(p.path)}
-                      className="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-left transition-colors"
+                      className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-indigo-50/50 text-left transition-colors group"
                     >
-                      <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                        <span className="font-bold text-slate-800 dark:text-slate-200">{p.title}</span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center border border-indigo-100">
+                          <Icon className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{p.title}</span>
                       </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                      <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 transition-colors" />
                     </button>
                   );
                 })}
@@ -215,9 +223,9 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-2.5 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-400 flex items-center justify-between px-4">
-          <span>Navigation Shortcut</span>
-          <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border text-[10px] font-mono">ESC</kbd> to exit</span>
+        <div className="p-3 bg-slate-50 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between px-4">
+          <span className="font-medium text-slate-500">Global Command Search</span>
+          <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-200 text-[10px] font-mono text-slate-600 shadow-2xs font-bold">ESC</kbd> to exit</span>
         </div>
       </div>
     </div>
@@ -225,3 +233,4 @@ const QuickSearchModal = ({ isOpen, onClose }) => {
 };
 
 export default QuickSearchModal;
+

@@ -54,7 +54,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           path: "/models",
           icon: Smartphone,
           badge: `${badgeCounts.models} Models`,
-          badgeColor: 'bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300'
+          badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
         },
         { label: "Hardware Components", path: "/components", icon: Cpu },
       ]
@@ -69,7 +69,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           path: "/cost-optimizer",
           icon: Calculator,
           badge: "Save 3%",
-          badgeColor: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300"
+          badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200 font-bold"
         },
       ]
     },
@@ -81,7 +81,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           path: "/batches",
           icon: Factory,
           badge: badgeCounts.lowStock > 0 ? `${badgeCounts.lowStock} Alert` : null,
-          badgeColor: "bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 animate-pulse"
+          badgeColor: "bg-rose-50 text-rose-700 border-rose-200 animate-pulse font-bold"
         },
         { label: "Inventory Valuation (Q1)", path: "/inventory", icon: Boxes },
       ]
@@ -102,7 +102,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           path: "/db-explorer",
           icon: Binary,
           badge: "Interactive",
-          badgeColor: "bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
+          badgeColor: "bg-blue-50 text-blue-700 border-blue-200 font-bold"
         },
         ...(isAdmin ? [{ label: "Regulatory Audit Trail", path: "/audit-log", icon: ShieldAlert }] : [])
       ]
@@ -121,17 +121,17 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
       {/* Sidebar Aside */}
       <aside
-        className={`fixed lg:sticky top-0 lg:top-16 left-0 z-40 h-full lg:h-[calc(100vh-4rem)] w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between transition-transform duration-300 ease-in-out shadow-xs ${
+        className={`fixed lg:sticky top-0 lg:top-16 left-0 z-40 h-full lg:h-[calc(100vh-4rem)] w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between transition-transform duration-300 ease-in-out shadow-[1px_0_4px_0_rgba(15,23,42,0.02)] ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
-        <div className="flex-1 overflow-y-auto px-3.5 py-4 space-y-6">
+        <div className="flex-1 overflow-y-auto px-3.5 py-4 space-y-5">
           {/* Mobile Close Button */}
-          <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 lg:hidden">
-            <span className="font-bold text-slate-800 dark:text-white text-sm">Navigation Menu</span>
+          <div className="flex items-center justify-between pb-2 border-b border-slate-100 lg:hidden">
+            <span className="font-bold text-slate-800 text-sm">Navigation Menu</span>
             <button
               onClick={closeSidebar}
-              className="p-1 rounded text-slate-500 hover:text-slate-800 dark:hover:text-white"
+              className="p-1 rounded text-slate-500 hover:text-slate-800"
             >
               <X className="w-5 h-5" />
             </button>
@@ -139,7 +139,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
           {navSections.map((sec, idx) => (
             <div key={idx}>
-              <div className="px-2.5 mb-2 text-[10px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+              <div className="px-2.5 mb-2 text-[10px] font-black tracking-wider text-slate-400 uppercase">
                 {sec.title}
               </div>
               <div className="space-y-1">
@@ -151,19 +151,19 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
                       to={item.path}
                       onClick={() => { if (window.innerWidth < 1024) closeSidebar(); }}
                       className={({ isActive }) =>
-                        `flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                        `flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                           isActive
-                            ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25 font-bold'
-                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-100'
+                            ? 'bg-gradient-to-r from-indigo-50/90 via-indigo-50/60 to-blue-50/40 text-indigo-700 font-bold border-l-4 border-indigo-600 shadow-2xs'
+                            : 'text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 font-medium'
                         }`
                       }
                     >
                       <div className="flex items-center gap-2.5 truncate">
-                        <Icon className="w-4 h-4 shrink-0" />
+                        <Icon className="w-4 h-4 shrink-0 transition-colors" />
                         <span className="truncate">{item.label}</span>
                       </div>
                       {item.badge && (
-                        <span className={`text-[10px] px-1.5 py-0.2 rounded-md font-bold uppercase tracking-tight shrink-0 ${item.badgeColor}`}>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-bold uppercase tracking-tight shrink-0 border ${item.badgeColor}`}>
                           {item.badge}
                         </span>
                       )}
@@ -176,14 +176,19 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
         </div>
 
         {/* Footer info in sidebar */}
-        <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>DBMS Production</span>
+        <div className="p-3.5 border-t border-slate-200/80 bg-slate-50/60 text-[11px] text-slate-500 flex flex-col gap-1.5">
+          <div className="flex items-center justify-between font-semibold text-slate-700">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs font-bold text-slate-800">Oracle 21c XE Online</span>
+            </div>
+            <span className="px-1.5 py-0.5 rounded bg-white border border-slate-200 font-mono text-[10px] font-bold text-slate-600 shadow-2xs">
+              v2.4 Pro
+            </span>
           </div>
-          <span className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
-            v2.4
-          </span>
+          <div className="text-[10px] text-slate-400 font-medium leading-tight">
+            Manipal Institute of Technology (MCA DBMS)
+          </div>
         </div>
       </aside>
     </>

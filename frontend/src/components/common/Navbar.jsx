@@ -91,31 +91,31 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
   };
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 lg:px-6 flex items-center justify-between transition-colors shadow-xs">
+    <header className="sticky top-0 z-30 h-16 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 lg:px-6 flex items-center justify-between transition-colors shadow-[0_1px_4px_0_rgba(15,23,42,0.04)]">
       {/* Left: Brand Identity */}
       <div className="flex items-center gap-3">
         <button
           onClick={toggleSidebar}
           aria-label="Toggle Navigation"
-          className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden"
+          className="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 lg:hidden transition-colors"
         >
           <Menu className="w-5 h-5" />
         </button>
 
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-700 to-blue-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
             ⚡
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-black text-slate-900 dark:text-white text-base sm:text-lg tracking-tight">
-                Apex<span className="text-blue-600 dark:text-blue-400">MES</span>
+              <span className="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight">
+                Apex<span className="text-indigo-600">MES</span>
               </span>
-              <span className="hidden sm:inline-flex text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              <span className="hidden sm:inline-flex text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/80 font-mono">
                 Enterprise 21c
               </span>
             </div>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block font-medium">
+            <p className="text-[10px] text-slate-500 hidden sm:block font-medium">
               Mobile Manufacturing Execution System • Manipal MIT
             </p>
           </div>
@@ -126,14 +126,14 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
       <div className="hidden md:flex items-center">
         <button
           onClick={openQuickSearch}
-          className="flex items-center gap-3 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800/70 dark:hover:bg-slate-800 text-xs text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60 transition-all w-64 justify-between"
+          className="flex items-center gap-3 px-3.5 py-1.5 rounded-xl bg-slate-100/80 hover:bg-slate-100 hover:border-slate-300 text-xs text-slate-500 border border-slate-200/80 transition-all w-72 justify-between shadow-2xs"
         >
           <span className="flex items-center gap-2">
-            <Search className="w-3.5 h-3.5" />
-            <span>Search models, batches, suppliers...</span>
+            <Search className="w-3.5 h-3.5 text-slate-400" />
+            <span className="font-medium text-slate-600">Search models, batches, suppliers...</span>
           </span>
-          <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded shadow-xs">
-            Ctrl+K
+          <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-white border border-slate-200 text-slate-500 rounded shadow-2xs">
+            Ctrl K
           </kbd>
         </button>
       </div>
@@ -144,7 +144,7 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
         <div className="relative" ref={actionsRef}>
           <button
             onClick={() => setShowQuickActions(!showQuickActions)}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm shadow-blue-500/20 transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white text-xs font-bold shadow-sm shadow-indigo-500/20 transition-all"
           >
             <PlusCircle className="w-3.5 h-3.5" />
             <span>Action</span>
@@ -152,14 +152,14 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
           </button>
 
           {showQuickActions && (
-            <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl py-2 z-50 animate-fade-in text-xs font-semibold">
-              <div className="px-3 py-1 text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+            <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl border border-slate-200/90 shadow-dropdown py-2 z-50 animate-fade-in text-xs font-semibold">
+              <div className="px-3.5 py-1 text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                 Fast Creation
               </div>
               <Link
                 to="/record-sale"
                 onClick={() => setShowQuickActions(false)}
-                className="flex items-center gap-2 px-3 py-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-2.5 px-3.5 py-2 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
               >
                 <ShoppingCart className="w-4 h-4 text-emerald-500" />
                 <span>Record Batch Sale</span>
@@ -167,7 +167,7 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
               <Link
                 to="/batches"
                 onClick={() => setShowQuickActions(false)}
-                className="flex items-center gap-2 px-3 py-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-2.5 px-3.5 py-2 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
               >
                 <Factory className="w-4 h-4 text-blue-500" />
                 <span>New Production Batch</span>
@@ -175,18 +175,19 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
               <Link
                 to="/models"
                 onClick={() => setShowQuickActions(false)}
-                className="flex items-center gap-2 px-3 py-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-2.5 px-3.5 py-2 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors"
               >
-                <Smartphone className="w-4 h-4 text-purple-500" />
+                <Smartphone className="w-4 h-4 text-indigo-500" />
                 <span>Add Phone Model</span>
               </Link>
-              <div className="border-t border-slate-100 dark:border-slate-800 my-1" />
+              <div className="border-t border-slate-100 my-1" />
               <Link
                 to="/cost-optimizer"
                 onClick={() => setShowQuickActions(false)}
-                className="flex items-center gap-2 px-3 py-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-2.5 px-3.5 py-2 text-indigo-700 hover:bg-indigo-50 transition-colors font-bold"
               >
-                <span>⚡ Run Cost Optimizer</span>
+                <Zap className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Run Cost Optimizer</span>
               </Link>
             </div>
           )}
@@ -195,15 +196,15 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
         {/* Database Status Indicator */}
         <div
           title={dbStatus.engine}
-          className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
+          className={`hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border shadow-2xs transition-all ${
             dbStatus.isOracle
-              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
-              : 'bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+              ? 'bg-emerald-50/90 text-emerald-800 border-emerald-200/90'
+              : 'bg-amber-50/90 text-amber-800 border-amber-200/90'
           }`}
         >
           <span className={`w-2 h-2 rounded-full ${dbStatus.isOracle ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
-          <Database className="w-3.5 h-3.5" />
-          <span className="truncate max-w-[150px] font-semibold">
+          <Database className="w-3.5 h-3.5 text-emerald-600" />
+          <span className="truncate max-w-[155px] font-bold text-emerald-900">
             {dbStatus.isOracle ? 'Oracle 21c (Thin Pool)' : 'Oracle Shadow Engine'}
           </span>
         </div>
@@ -213,42 +214,42 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
           <button
             onClick={() => setShowNotifications(!showNotifications)}
             aria-label="View notifications"
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 relative transition-colors"
+            className="p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 relative transition-colors"
           >
             <Bell className="w-4 h-4" />
             {reorderAlerts.length > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 bg-rose-500 text-white text-[9px] font-black rounded-full flex items-center justify-center animate-bounce">
+              <span className="absolute top-1 right-1 w-4 h-4 bg-rose-500 text-white text-[9px] font-black rounded-full flex items-center justify-center animate-bounce shadow-xs">
                 {reorderAlerts.length}
               </span>
             )}
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-4 z-50 animate-fade-in space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-4 z-50 animate-fade-in space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                <span className="font-bold text-xs uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4 text-rose-500" />
                   Restock Notifications
                 </span>
-                <span className="text-[10px] font-mono text-slate-400">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 font-bold border border-rose-200">
                   {reorderAlerts.length} Critical
                 </span>
               </div>
 
               {reorderAlerts.length === 0 ? (
-                <div className="py-6 text-center text-xs text-slate-400">
+                <div className="py-6 text-center text-xs text-slate-500">
                   <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto mb-2 opacity-80" />
                   All manufacturing batch stocks healthy.
                 </div>
               ) : (
-                <div className="space-y-2 max-h-64 overflow-y-auto">
+                <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
                   {reorderAlerts.map((a) => (
                     <div
                       key={a.batch_id}
-                      className="p-2.5 rounded-xl bg-rose-50/70 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 flex items-center justify-between text-xs"
+                      className="p-2.5 rounded-xl bg-rose-50/60 border border-rose-200/80 flex items-center justify-between text-xs hover:bg-rose-50 transition-colors"
                     >
                       <div>
-                        <div className="font-bold text-slate-900 dark:text-white">
+                        <div className="font-bold text-slate-900">
                           {a.batch_id} • {a.model_name}
                         </div>
                         <div className="text-[10px] text-slate-500">
@@ -256,7 +257,7 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <span className="font-mono font-bold text-rose-600 dark:text-rose-400">
+                        <span className="font-mono font-bold text-rose-700">
                           {a.remaining_stock} left
                         </span>
                         <div className="text-[9px] text-slate-400">
@@ -271,7 +272,7 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
               <Link
                 to="/batches"
                 onClick={() => setShowNotifications(false)}
-                className="block text-center text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline pt-2 border-t border-slate-100 dark:border-slate-800"
+                className="block text-center text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline pt-2 border-t border-slate-100"
               >
                 Inspect All Batches →
               </Link>
@@ -279,27 +280,18 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
           )}
         </div>
 
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="p-2 rounded-xl text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-        >
-          {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
-        </button>
-
         {/* User Badge & Fast Role Switcher */}
         {user && (
-          <div className="relative pl-2 border-l border-slate-200 dark:border-slate-800" ref={roleRef}>
+          <div className="relative pl-2 border-l border-slate-200" ref={roleRef}>
             <button
               onClick={() => setShowRoleSwitcher(!showRoleSwitcher)}
-              className="flex items-center gap-2 text-left hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2 text-left hover:opacity-90 transition-opacity p-1 rounded-xl hover:bg-slate-100"
             >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-slate-700 to-slate-900 text-white flex items-center justify-center font-bold text-xs uppercase shadow-sm">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-slate-900 text-white flex items-center justify-center font-bold text-xs uppercase shadow-xs">
                 {user.username.slice(0, 2)}
               </div>
               <div className="hidden xl:flex flex-col">
-                <span className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">
+                <span className="text-xs font-bold text-slate-900 leading-tight">
                   {user.full_name}
                 </span>
                 <span className={`text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded border w-max ${getRoleBadge(user.role)}`}>
@@ -310,10 +302,10 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
             </button>
 
             {showRoleSwitcher && (
-              <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-4 z-50 animate-fade-in space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl border border-slate-200 shadow-dropdown p-4 z-50 animate-fade-in space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <div>
-                    <div className="text-xs font-bold text-slate-900 dark:text-white">
+                    <div className="text-xs font-bold text-slate-900">
                       {user.full_name}
                     </div>
                     <div className="text-[10px] text-slate-400">@{user.username}</div>
@@ -333,8 +325,8 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
                       onClick={() => switchRole('admin', 'admin123')}
                       className={`p-1.5 rounded-lg text-[10px] font-bold border transition-colors ${
                         user.role === 'ADMIN'
-                          ? 'bg-purple-600 text-white border-purple-600'
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-purple-50'
+                          ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-indigo-50 hover:text-indigo-700'
                       }`}
                     >
                       Admin
@@ -343,8 +335,8 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
                       onClick={() => switchRole('manager', 'manager123')}
                       className={`p-1.5 rounded-lg text-[10px] font-bold border transition-colors ${
                         user.role === 'MANAGER'
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-blue-50'
+                          ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-blue-50 hover:text-blue-700'
                       }`}
                     >
                       Manager
@@ -353,8 +345,8 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
                       onClick={() => switchRole('viewer', 'viewer123')}
                       className={`p-1.5 rounded-lg text-[10px] font-bold border transition-colors ${
                         user.role === 'VIEWER'
-                          ? 'bg-slate-600 text-white border-slate-600'
-                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-200'
+                          ? 'bg-slate-700 text-white border-slate-700 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-200'
                       }`}
                     >
                       Viewer
@@ -362,10 +354,10 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+                <div className="pt-2 border-t border-slate-100">
                   <button
                     onClick={logout}
-                    className="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-xs font-bold transition-colors"
+                    className="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-rose-600 hover:bg-rose-50 text-xs font-bold transition-colors"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>

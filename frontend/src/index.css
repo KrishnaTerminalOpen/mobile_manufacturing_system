@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white;
+    @apply bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-600 selection:text-white;
     min-height: 100vh;
   }
 }
@@ -18,28 +18,37 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 dark:bg-slate-700 rounded;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-400 dark:bg-slate-600;
+  @apply bg-slate-200 hover:bg-slate-300 rounded-full transition-colors;
 }
 
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  50% { opacity: 0.65; }
 }
 
 .animate-pulse-subtle {
   animation: pulse-subtle 2.5s infinite;
 }
 
-/* Glassmorphism utility */
+/* Enterprise Light Theme Surfaces */
 .glass-panel {
-  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80;
+  @apply bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-card;
 }
 
 .glass-card {
-  @apply bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-200;
+  @apply bg-white border border-slate-200/80 shadow-card hover:shadow-card-hover hover:border-indigo-200/70 transition-all duration-200;
+}
+
+.stat-card-gradient {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 0.9) 100%);
+}
+
+/* Subtle background grid pattern for light theme */
+.bg-light-pattern {
+  background-color: #f8fafc;
+  background-image: radial-gradient(#e2e8f0 0.75px, transparent 0.75px), radial-gradient(#e2e8f0 0.75px, #f8fafc 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
 }
 
 /* Print styles for invoices and reports */
