@@ -4,8 +4,6 @@ import api from '../services/api';
 import { useToast } from '../context/ToastContext';
 import { LoadingSkeleton } from '../components/common/LoadingSkeleton';
 import {
-  Building2,
-  Smartphone,
   Factory,
   Boxes,
   TrendingUp,
@@ -14,19 +12,11 @@ import {
   PlusCircle,
   ArrowUpRight,
   ShieldAlert,
-  Percent,
-  CheckCircle2,
-  Clock,
-  Sparkles,
-  Zap,
-  Download,
-  Filter
+  Sparkles
 } from 'lucide-react';
 import {
   BarChart,
   Bar,
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -63,7 +53,22 @@ const Dashboard = () => {
     return <LoadingSkeleton rows={8} cols={4} />;
   }
 
-  const { kpis, revenue_by_brand, sales_trend_monthly, batch_stock_status, bom_vs_price, reorder_alerts, database_engine } = data;
+  const kpis = data?.kpis || {
+    total_brands: 0,
+    total_models: 0,
+    active_batches: 0,
+    total_units_produced: 0,
+    total_units_sold: 0,
+    gross_revenue: 0,
+    net_surplus: 0,
+    low_stock_batches_count: 0
+  };
+  const revenue_by_brand = data?.revenue_by_brand || [];
+  const sales_trend_monthly = data?.sales_trend_monthly || [];
+  const batch_stock_status = data?.batch_stock_status || [];
+  const bom_vs_price = data?.bom_vs_price || [];
+  const reorder_alerts = data?.reorder_alerts || [];
+  const database_engine = data?.database_engine || 'Oracle Database 21c XE';
 
   const formatCurrency = (val) => {
     const num = Number(val || 0);
@@ -73,8 +78,10 @@ const Dashboard = () => {
     return `₹${num.toLocaleString('en-IN')}`;
   };
 
-  const depletionRate = Math.round((kpis.total_units_sold / (kpis.total_units_produced || 1)) * 100);
-  const roi = Math.round((kpis.net_surplus / (kpis.gross_revenue - kpis.net_surplus || 1)) * 100);
+  const totalProduced = kpis.total_units_produced || 1;
+  const depletionRate = Math.round(((kpis.total_units_sold || 0) / totalProduced) * 100);
+  const costBasis = (kpis.gross_revenue || 0) - (kpis.net_surplus || 0);
+  const roi = costBasis > 0 ? Math.round(((kpis.net_surplus || 0) / costBasis) * 100) : 0;
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
