@@ -3,27 +3,30 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Enforce enterprise light theme
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('mms_theme') || 'light';
+  });
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('dark');
-    localStorage.setItem('mms_theme', 'light');
-  }, []);
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('mms_theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    // Keep light theme active
-    setTheme('light');
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: 'light', toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
 export const useTheme = () => useContext(ThemeContext);
-
 

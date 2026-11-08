@@ -22,7 +22,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans selection:bg-indigo-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans transition-colors duration-200">
       <Navbar
         toggleSidebar={() => setSidebarOpen(prev => !prev)}
         openQuickSearch={() => setQuickSearchOpen(true)}
@@ -32,7 +32,7 @@ const Layout = () => {
           isOpen={sidebarOpen}
           closeSidebar={() => setSidebarOpen(false)}
         />
-        <main className="flex-1 min-w-0 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-slate-50/50 via-[#f8fafc] to-slate-100/60">
+        <main className="flex-1 min-w-0 overflow-y-auto p-4 sm:p-6 lg:p-8">
           <Outlet />
         </main>
       </div>
