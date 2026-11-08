@@ -116,7 +116,7 @@ const Navbar = ({ toggleSidebar, openQuickSearch }) => {
               </span>
             </div>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 hidden sm:block font-medium">
-              Mobile Manufacturing Execution System • Manipal MIT
+              Mobile Manufacturing Execution System • Enterprise Edition
             </p>
           </div>
         </Link>

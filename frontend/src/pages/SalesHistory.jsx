@@ -345,7 +345,7 @@ const SalesHistory = () => {
                     Plot 44, Electronics City Phase 1, Bengaluru, Karnataka - 560100
                   </p>
                   <p className="text-slate-500 text-[11px]">
-                    GSTIN: 29AAACA1234F1Z5 • MCA Mini Project Verification
+                    GSTIN: 29AAACA1234F1Z5 • Official Registered Tax Invoice
                   </p>
                 </div>
 
@@ -455,7 +455,7 @@ const SalesHistory = () => {
                 <div className="text-right">
                   <div className="h-8 border-b border-dashed border-slate-300 w-44 ml-auto mb-1" />
                   <p className="font-bold text-slate-700">Authorized Plant Signatory</p>
-                  <p>Manipal Institute of Technology</p>
+                  <p>Plant Operations & Dispatches Directorate</p>
                 </div>
               </div>
             </div>
