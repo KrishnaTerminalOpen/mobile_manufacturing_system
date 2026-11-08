@@ -151,9 +151,9 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
                       to={item.path}
                       onClick={() => { if (window.innerWidth < 1024) closeSidebar(); }}
                       className={({ isActive }) =>
-                        `flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                        `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                           isActive
-                            ? 'bg-indigo-50/90 text-indigo-700 font-bold border-l-4 border-indigo-600 shadow-2xs'
+                            ? 'active font-bold shadow-sm'
                             : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 font-medium'
                         }`
                       }
